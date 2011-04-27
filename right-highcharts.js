@@ -13,7 +13,12 @@ var HighchartsAdapter = {
       });
     } else if (element.element) { // svg, rects and so one
       for (var key in params) {
-        element.element.setAttribute(key, params[key]);
+        element.element.setAttribute(key,
+          key !== 'd' ? params[key] : (
+            params[key][0] + params[key][1] + ' '+ params[key][2] + ' ' +
+            params[key][3] + params[key][4] + ' '+ params[key][5] + ' '
+          )
+        );
       }
     }
   },
